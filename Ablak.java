@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Ablak extends JFrame implements  ActionListener {
+
+    private JButton b1,b2;
+
     public Ablak() {
         this.setTitle("Ablak");
         this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -11,7 +14,15 @@ public class Ablak extends JFrame implements  ActionListener {
         setVisible(true);
         setLayout(new FlowLayout());
 
-        JButton b = new JButton("bezár");
+        JButton b1 = new JButton("bezár");
+        JButton b2 = new JButton("megnyit");
+
+        b1.addActionListener(this);
+        b2.addActionListener(this);
+
+
+
+        JButton b = new JButton();
         b.addActionListener(this);
 //        b.addActionListener(new ActionListener() {
 //            @Override
@@ -26,8 +37,15 @@ public class Ablak extends JFrame implements  ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        dispose();
-        System.exit(0);
+        Object src = e.getSource();
+        if ( src == b1){
+            dispose();
+            System.exit(0);
+        }else{
+            System.out.println("megnyitas folyamatban");
+        }
+
+
     }
 
     public static void main(String[] args) {
